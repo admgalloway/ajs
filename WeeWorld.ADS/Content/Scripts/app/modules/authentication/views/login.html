@@ -1,0 +1,48 @@
+﻿<!-- route controller set to userindexCtrl on ng-view by routing module -->
+
+<div class="section section-box">
+
+    <div class="section-header">
+        <i class="fa fa-paper-plane"></i> WeeWorld ADS 
+    </div>
+    <div class="section-content">
+
+        <form role="form">
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                
+                <input type="text" class="form-control" id="emailAddress" placeholder="emailAddress" ng-model="credentials.emailAddress">
+                <div class="js-tooltip">
+                    <h4>Wanna Save some time?</h4>
+                    <p>
+                        If your using a <em class="highlight">@weeworld.com</em> address, just enter your username instead of your full email address.
+                        For example, if your email adderss is <em>quagmire@weeworld.com</em>, just enter <em class="highlight">quagmire</em>.
+                    </p>
+                    <p>
+                        So go on, save your self up to 3 seconds and we'll do the hard work.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="credentials.password">
+            </div>
+
+        </form>
+
+        <div class="pull-left authenticating" ng-if="authenticating">
+            <i class="fa fa-spinner fa-spin"></i> authenticating...
+        </div>
+        <div class="pull-left error" ng-if="error != null">
+            <i class="fa fa-exclamation-triangle"></i> {{error}}
+        </div>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-success" ng-disabled="authenticating" ng-click="Login(); $event.stopPropagation();">
+                <i class="fa fa-lock"></i> Login
+            </button>
+        </div>
+    </div>
+</div>
+
+<link href="content/scripts/app/modules/authentication/styles/authentication.css" rel="stylesheet" />

@@ -1,0 +1,29 @@
+﻿@model WeeWorld.Ads.ViewModels.App.LoginVM
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WeeWorld: Mobile Application Distribution System</title>
+    <link href="~/Content/Styles/login.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body>
+    <img id="logo" src="~/Content/images/logo.png" alt="WeeWorld" />
+    <div id="version">
+        v0.0.3
+    </div>
+
+    @using(Html.BeginForm("Login", "App", FormMethod.Post))
+    {
+        <div id="header">
+            Mobile Applications Distributor
+        </div>
+
+        @Html.TextBoxFor(m => m.EmailAddress, new { placeholder="Email Address" })
+        @Html.PasswordFor(m => m.Password, new { placeholder="Password" })
+        <button type="submit">Login</button>
+        @Html.ValidationSummary();
+    }
+
+</body>
+</html>

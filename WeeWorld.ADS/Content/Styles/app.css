@@ -1,0 +1,384 @@
+html {
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+body {
+    height:100%;
+    padding:20px 10px 20px 0;
+    padding:0;
+    padding-left:100px;
+    margin:0;
+    font-family:Corbel;
+    box-sizing:border-box;
+    background:#2e80ab;
+}
+
+/* NAV MENU */
+
+nav {
+    background:#3e4045;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    z-index: 2;
+    box-shadow:1px 0 1px #000;
+}
+
+nav header {
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#3e4045;
+    font-weight:bold;
+    font-size:18px;
+    background: #2e80ab;
+    height:50px;
+    box-sizing:border-box;
+    position:relative;
+    box-shadow: 1px 0px 1px #666;
+}
+
+nav a {
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    display:block;
+    width:100px;
+    color:#2e80ab;
+    padding:30px 0;
+    transition:all linear 0.2s;
+    border-bottom:1px solid #888;
+}
+
+nav a:hover {
+    background:#555;
+    transition:all 0.3s linear;
+    color:#fff;
+    text-decoration:none;
+}
+
+nav a div {
+    font-variant:small-caps;
+    color:#bbb;
+    transition:all linear 0.2s;
+}
+
+nav a:hover div {
+    color:#fff;
+}
+
+.content-wrapper {
+
+    position:fixed;
+    top:0;
+    left:100px;
+    right:0;
+    bottom:0;
+    transition:all linear 0.2s;
+}
+
+/* SECTIONS */
+.section {
+    position:absolute;
+    background:#fff;
+    top:0;
+    bottom:0;
+    width:50%;
+    box-shadow: 1px 0px 1px #bbb;
+
+    transition:all linear 0.2s;
+    -webkit-transition:all linear 0.2s;
+    -moz-transition:all linear 0.2s;
+}
+
+.section.ng-hide {
+    width:0;
+    opacity: 0;
+}
+
+.section.section-left {
+    left:0;
+    color: #2e80ab
+}
+
+.section.section-full {
+    left:0;
+    right:0;
+    color: #2e80ab;
+    width:100%;
+}
+
+.section.section-right {
+    left:50%;
+    right:0;
+    background:#f4f4f4;
+    color: #4a4a5b
+}
+
+.section .section-header {
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:50px;
+    box-sizing:border-box;
+    background:#3e4045;
+    color:#bbb;
+    padding:16px 15px;
+    margin-bottom: 5px;
+    border-right:1px solid #888;
+}
+
+    .section .section-header i {
+    
+        color:#ddd
+    }
+
+.section .section-content {
+    position:absolute;
+    left:0;
+    right:0;
+    top:50px;
+    bottom:0;
+    overflow-y:auto;
+    padding:10px;
+    box-sizing:border-box;
+}
+
+.section .section-content .spinner {
+    position:absolute; 
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    opacity:0.8;
+    background:#fff;
+    text-align:center;
+    padding-top:29%;
+    transition: all linear 0.55s;
+}
+
+.section .section-content .spinner.ng-hide {
+    opacity: 0;
+}
+
+.section-content::-webkit-scrollbar {
+    width: 18px;
+}
+
+.section-content::-webkit-scrollbar-track {
+    background:#ddd;
+}
+
+.section-content::-webkit-scrollbar-thumb {
+    background:#5e778a;
+}
+
+.hover {
+    cursor:pointer;
+}
+
+.center-y {
+        width:100%;
+    height: 50%;
+    overflow: visible;
+    margin: auto;
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+}
+
+.center-xy {
+    height: 50%;
+    min-width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ALERTS */
+.alert-box {
+    padding: 1em;
+    color:#eee;
+    transition:all linear 0.2s;
+    margin:-10px;
+    margin-bottom:10px;
+}
+
+.alert-box-none {
+    height:0;
+    overflow:hidden;
+    padding:0 1em;
+    margin-bottom:0;
+}
+
+.alert-box-success {
+    background:#5cb85c;
+}
+
+.alert-box-error {
+    background:#d43f3a;
+}
+
+.alert-box .validation-errors {
+    width:90%;
+    margin-bottom: 0;
+}
+
+.alert-box .validation-errors li {
+    color:#eee;
+}
+
+/* TABLES */
+table th {
+    padding:5px;
+    color:#444;
+    border-bottom:1px solid #444;
+}
+
+table td {
+    padding:5px;
+}
+
+table tr:hover {
+    cursor:pointer;
+    background:#eee;
+}
+
+form {
+    padding: 5px;
+}
+
+.js-tooltip {
+    display:inline; 
+}
+
+.js-tooltip i {
+    color: #2e80ab;
+    cursor:help;
+    z-index:100;
+}
+
+.js-tooltip span.tooltip-content {
+    background: #fff;
+    border: 1px solid #2e80ab;
+    margin-left:10px;
+    position:fixed;
+    width:300px;
+    padding:5px;
+    z-index:100;
+}
+
+.scrolling-list {
+    background:#fff;
+    border:1px solid #aaa;
+    padding:0px;
+    border-radius: 6px 2px 2px 6px ;
+    max-height:200px;
+    min-height:80px;
+    overflow-y:scroll;
+    transition:max-height linear 0.3s;
+}
+
+@media screen and (max-height: 700px) {
+    .scrolling-list {
+        max-height: 100px;
+    }
+}
+
+
+.scrolling-list::-webkit-scrollbar {
+    width: 18px;
+}
+
+.scrolling-list::-webkit-scrollbar-track {
+    background:#ddd;
+}
+
+.scrolling-list::-webkit-scrollbar-thumb {
+    background:#5e778a;
+}
+
+.scrolling-list li {
+    list-style: none;
+    padding:5px;
+}
+
+.scrolling-list li:hover {
+    background:#ddd;
+    cursor:pointer;
+}
+
+/* Single section visible at one time */
+@media screen and (max-width: 900px) {
+    .section {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+        .section.section-right {
+            left: 0;
+        }
+
+    body nav a {
+        width: 60px;
+    }
+
+    .content-wrapper {
+        left: 60px;
+    }
+
+    .alert-box .validation-errors {
+        width: 80%;
+    }
+}
+
+/* nav bar at top */
+@media screen and (max-width: 450px) {
+
+    body nav {
+        width: 100%;
+        bottom: auto;
+    }
+
+        body nav header,
+        body nav a {
+            display: table-cell;
+            vertical-align: middle;
+            float: left;
+            width: 20%;
+            padding: 1em 0;
+            height: 100%;
+            border-bottom: 0;
+            border-left: 1px solid #888;
+        }
+
+    .section {
+        top: 80px;
+    }
+
+    .content-wrapper {
+        left: 0;
+    }
+}
+
+/* no labels on nav bar */
+@media screen and (max-width: 320px) {
+    body nav a div {
+        display: none;
+    }
+
+    .section {
+        top: 60px;
+    }
+}

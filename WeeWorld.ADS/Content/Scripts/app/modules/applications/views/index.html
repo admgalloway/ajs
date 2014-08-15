@@ -1,0 +1,129 @@
+﻿<!-- route controller set to userindexCtrl on ng-view by routing module -->
+
+<div class="section section-left">
+
+    <div class="section-header">
+        <i class="fa fa-cubes"></i> Applications
+        <i class="fa fa-plus pull-right hover" ng-click="OpenForm(); $event.stopPropagation();" title="Create New Application"></i>
+    </div>
+    <div class="section-content">
+
+        <div ng-show="fetchingApplications" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Loading Applications</div>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="filterPlatform" name="filterPlatform" ng-model="filterPlatform">
+                <option value="" selected>Platform...</option>
+                <option>iOS</option>
+                <option>Android</option>
+                <option>Windows</option>
+            </select>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Application Name</th>
+                    <th>Platform</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="application in applications | filter: { Platform : filterPlatform}" ng-click="OpenForm(application)">
+                    <td>{{application.Id}}</td>
+                    <td>{{application.Name}}</td>
+                    <td>{{application.Platform}}</td>
+
+                    <td>
+                        <i class="fa fa-times close" ng-click="Delete(application.Id); $event.stopPropagation();" title="Delete"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section section-right" ng-show="isEditting()">
+
+    <div class="section-header">
+        <i class="fa fa-cube"></i>
+        <span ng-switch="currentApplication.Id">
+            <span ng-switch-when="0">Create New</span>
+            <span ng-switch-default>Edit</span>
+        </span> Application
+        <i class="fa fa-times pull-right hover" ng-click="CloseForm(); $event.stopPropagation();" title="Close Form"></i>
+
+    </div>
+
+    <div class="section-content">
+
+        <div ng-show="savingApplication" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Saving Application</div>
+        </div>
+
+
+        <div class="alert-box alert-box-{{alertState}}">
+            <i class="fa fa-times pull-right hover" ng-click="HideAlert(); $event.stopPropagation();" title="Dismiss"></i>
+            <span ng-switch="alertState">
+                <span ng-switch-when="success">Application saved!</span>
+                <span ng-switch-when="warning">meh</span>
+            </span>
+            
+            <ul class="fa-ul validation-errors" ng-if="errors.length > 0" >
+                <li ng-repeat="error in errors">
+                    <i class="fa-li fa fa-exclamation-circle"></i>
+                    <span>{{error.Details}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="form-control" id="id" ng-model="currentApplication.Id" readonly="readonly" title="This id is generated automatically when a user is created.">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Application Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Application Name" ng-model="currentApplication.Name">
+            </div>
+
+            <div class="form-group">
+                <label for="platform">Platform</label>
+                <select class="form-control" id="platform" name="platform" ng-model="currentApplication.Platform">
+                    <option>iOS</option>
+                    <option>Android</option>
+                    <option>Windows</option>
+                </select>
+            </div>
+
+            <div class="form-group" ng-show="currentApplication.Id > 0">
+                <label>Distribution Groups</label>
+                <div class="js-tooltip">
+                    <p>Select which groups that this application belongs to.</p>
+                    <p>This will define the users that can access access this application.</p>
+                </div>
+                <ul class="scrolling-list">
+                    <li ng-click="ToggleGroup(group)" ng-repeat="group in groups">
+                        <div>
+                            <i class="fa {{group.Id | isInGroup:currentApplication}}"></i>
+                            <span>{{group.Name}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+        </form>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-link" ng-click="CloseForm(); $event.stopPropagation();" title="Cancel">cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="currentApplication.Id > 0 ? Update() : Create(); $event.stopPropagation();">Save</button>
+        </div>
+
+    </div>
+</div>
+
+<link href="content/scripts/app/modules/applications/styles/applications.css" rel="stylesheet" />

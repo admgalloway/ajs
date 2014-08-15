@@ -1,0 +1,140 @@
+
+    <div class="app-content-left panel" id="build-list">
+        <div class="panel-heading">
+            <i class="fa fa-gear"></i> Builds 
+        </div>
+
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-default" data-bind="click: Init"> 
+                    <i class="fa fa-refresh"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body with-scrollbar">
+            <div class="spinner" data-bind="visible: loadingList()">
+                <i class="fa fa-spinner fa-spin" style="vertical-align:middle"></i>  loading...
+            </div>
+
+            <div class="form-group">
+                <label>Show Builds For:</label>
+                <select class="form-control" data-bind="options: applications, optionsText: 'Name', optionsValue: 'Id', value: selectedAppId"></select>
+            </div>        
+
+            <table class="table table-hover">
+                <thead>
+                    <tr class="hover">
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>Version</th>
+                        <th>Build</th>
+                        <th>Build Date</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:builds">
+                    <tr class="hover" data-bind="click: $root.Edit">
+                        <td><a href="#" data-bind="text: Id"></a></td>
+                        <td><a href="#" data-bind="text: Type == 0 ? 'Production' : 'Ad-Hoc'"></a></td>
+                        <td><a href="#" data-bind="text: VersionNumber"></a></td>
+                        <td><a href="#" data-bind="text: BuildNumber"></a></td>
+                        <td><a href="#" data-bind="formattedDate: DateCreated"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-default" data-bind="click: Refresh" title="Look for new builds on the CI server and pull any new ones into the system">
+                    <i class="fa fa-refresh"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+<div class="app-content-right panel" id="user-details">
+    <div class="panel-heading">
+        <i class="fa fa-user"></i> Build Details
+    </div>
+    <div class="panel-body with-scrollbar">
+        <div class="spinner" data-bind="visible: loadingForm()">
+            <i class="fa fa-spinner fa-spin" style="vertical-align:middle"></i>  loading...
+        </div>
+
+        <form role="form" data-bind="with: obj"  >
+            <div class="form-group">
+                <label>Date Created</label>
+                <input disabled type="text" class="form-control" data-bind="formattedDate: DateCreated" />
+            </div>
+
+            <div class="form-group">
+                <label>Build Type</label>
+                <select disabled class="form-control" data-bind="value: Type">
+                    <option value="0">Production</option>
+                    <option value="1">Ad-Hoc</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Version Number</label>
+                <input disabled type="text" class="form-control" data-bind="value: VersionNumber" />
+            </div>
+            <div class="form-group">
+                <label>Build Number</label>
+                <input disabled type="text" class="form-control" data-bind="value: BuildNumber" />
+            </div>
+            <div class="form-group">
+                <label>Release Notes</label>
+                <textarea disabled class="form-control with-scrollbar" data-bind="value: ReleaseNotes"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Package Url</label>
+                <br />
+                <a title="Opens in new Url" data-bind="attr: { target: '_blank', href: PackageUrl }"><span data-bind="text: PackageUrl"></span></a>
+            </div>
+
+            <div class="form-group" >
+                <label>Submission Date</label>
+                <input type="text" disabled class="form-control" data-bind="formattedDate: SubmissionDate" />
+            </div>
+                        <div class="form-group">
+                <label>Submission State</label>
+                <select class="form-control" data-bind="value: SubmissionState">
+                    <option value="0">Not Submitted</option>
+                    <option value="1">Submitted</option>
+                    <option value="2">Accepted</option>
+                    <option value="3">rejected</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Submission Notes</label>
+                <textarea class="form-control with-scrollbar" data-bind="value: SubmissionNotes"></textarea>
+            </div>
+
+        </form>
+
+        <ul class="fa-ul validation-errors" data-bind="foreach: errors">
+            <li>
+                <i class="fa-li fa fa-exclamation-circle"></i>
+                <span data-bind="text: Details"></span>
+            </li>
+        </ul>
+
+        <div class="alert alert-success" data-bind="visible: $root.showAlert()">
+            <i class="fa fa-thumbs-o-up"></i> Build Saved!
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-xs-12 text-right" >
+                <button type="submit" class="btn btn-default" data-bind="click: Save, enable: !loadingForm()">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

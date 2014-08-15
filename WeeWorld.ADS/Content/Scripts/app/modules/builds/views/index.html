@@ -1,0 +1,170 @@
+﻿<div class="section section-left">
+
+    <div class="section-header">
+        <i class="fa fa-code-fork"></i> Builds
+    </div>
+    <div class="section-content">
+
+        <div ng-show="fetchingBuilds" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i> 
+            <div>Loading Builds</div>
+        </div>
+
+        <div class="form-group split">
+            <select class="form-control" id="filterPlatform" name="filterPlatform" ng-model="filter.Platform">
+                <option value="" selected>Platform...</option>
+                <option>iOS</option>
+                <option>Android</option>
+                <option>Windows</option>
+            </select>
+
+            <select class="form-control" id="filterApplication" name="filterApplication" ng-model="filter.Application">
+                <option value="" selected>Application...</option>
+                <option ng-repeat="application in applications | filter: { Platform : filter.Platform }" value="{{application.Id}}" selected>{{application.Name}}</option>
+            </select>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Application</th>
+                    <th>Version</th>
+                    <th>Submission State</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="build in builds |  filter: { Application : filter.Application }" title="{{build.Type | buildType}}" ng-click="OpenForm(build)" ng-class="{'release-build': build.Type == 0}">
+                    <td>{{build.Id}}</td>
+                    <td>{{build.Application | applicationName:applications}}</td>
+                    <td>{{build.VersionNumber}}</td>
+                    <td>
+                        {{build.SubmissionState | SubmissionState}}
+                        <div class="js-tooltip" ng-if="build.SubmissionState > 0">
+                            <h4>Submission Notes</h4>
+                            <p>
+                                {{build.SubmissionNotes}}
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <i class="fa fa-times close" ng-click="Delete(build.Id); $event.stopPropagation();" title="Delete"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section section-right" ng-show="isEditting()">
+
+    <div class="section-header">
+            <i class="fa fa-code-fork"></i>
+            <span ng-switch="currentBuild.Id">
+                <span ng-switch-when="0">Create New</span>
+                <span ng-switch-default>Edit</span>
+            </span> Build
+        <i class="fa fa-times pull-right hover" ng-click="CloseForm(); $event.stopPropagation();" title="Close Form"></i>
+
+    </div>
+
+    <div class="section-content">
+
+        <div ng-show="savingBuild" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Saving Build</div>
+        </div>
+
+
+        <div class="alert-box alert-box-{{alertState}}">
+            <i class="fa fa-times pull-right hover" ng-click="HideAlert(); $event.stopPropagation();" title="Dismiss"></i>
+            <span ng-switch="alertState">
+                <span ng-switch-when="success">Build saved!</span>
+                <span ng-switch-when="warning">meh</span>
+            </span>
+            
+            <ul class="fa-ul validation-errors" ng-if="errors.length > 0" >
+                <li ng-repeat="error in errors">
+                    <i class="fa-li fa fa-exclamation-circle"></i>
+                    <span>{{error.Details}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="form-control" id="id" ng-model="currentBuild.Id" readonly="readonly" title="This id is generated automatically when a build is created.">
+            </div>
+
+            <div class="form-group">
+                <label>Application</label>
+                <input type="text" class="form-control" value="{{currentBuild.Application | applicationName:applications}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Build Type</label>
+                <input type="text" class="form-control" value="{{currentBuild.Type | buildType}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Version Number</label>
+                <input type="text" class="form-control" value="{{currentBuild.VersionNumber}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Release Notes</label>
+                <input type="text" class="form-control" value="{{currentBuild.VersionNumber}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Build Number</label>
+                <input type="text" class="form-control" value="{{currentBuild.BuildNumber}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Package Url</label>
+                <a class="form-control" target="_blank" href="{{currentBuild.PackageUrl}}" readonly>{{currentBuild.PackageUrl}}</a>
+            </div>
+
+            <div class="form-group">
+                <label>Release Notes</label>
+                <textarea class="form-control" ng-model="currentBuild.ReleaseNotes"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Submission State</label>
+                <select class="form-control" id="submissionState" name="submissionState" ng-model="currentBuild.SubmissionState">
+                    <option value="0">Not Submitted</option>
+                    <option value="1">Submitted</option>
+                    <option value="2">Accepted</option>
+                    <option value="3">Rejected</option>
+                </select>
+            </div>
+
+                <div ng-if="currentBuild.SubmissionState > 0">
+                    <div class="form-group">
+                        <label>Submission Date</label>
+                        <input type="text" class="form-control" value="{{currentBuild.SubmissionDate}}" readonly>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Submission Notes</label>
+                        <textarea class="form-control" ng-model="currentBuild.SubmissionNotes"></textarea>
+                    </div>
+
+                </div>
+
+</form>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-link" ng-click="CloseForm(); $event.stopPropagation();" title="Cancel">cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="currentBuild.Id > 0 ? Update() : Create(); $event.stopPropagation();">Save</button>
+        </div>
+
+    </div>
+</div>
+
+<link href="content/scripts/app/modules/builds/styles/builds.css" rel="stylesheet" />

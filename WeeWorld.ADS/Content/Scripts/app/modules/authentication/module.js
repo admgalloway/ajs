@@ -1,0 +1,1 @@
+var authentication = angular.module('ads.authentication', []);

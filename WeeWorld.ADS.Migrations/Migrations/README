@@ -1,0 +1,21 @@
+﻿To create a clean instance of the the db, run the following command targetted at your sql server instance:
+
+C:\dev\MAD\packages\FluentMigrator.1.2.1.0\tools\Migrate.exe
+
+
+migrate -c "server=UK1SQL01;Database=ADS;Integrated Security=SSPI" -db "sqlserver2008" -a "C:\dev\MAD\WeeWorld.ADS.Migrations\bin\Debug\FluentMigrator.dll" -t "migrate:up"
+
+-c: the connection string targeting your instance of sql server.
+-db: the type of database server your running migrations against.
+-a: the full filepath to the WeeWorld.ADS.Migrations dll generated when you build the project.
+-t: the migration task to carry out. defaults to migrating up to the latest version.
+
+notes:
+
+The migrator tool is installed in the nuget packages directory when you build the application.
+To run migrations, execute the command from that directory or specificy the full pathname in the command. 
+
+Alternatively, add the directory to your path environment variable.
+
+
+You'll need to set the connection string (-c) param accordingly to point to your server and login credentials.

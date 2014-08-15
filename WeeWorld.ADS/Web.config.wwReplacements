@@ -1,0 +1,21 @@
+<appsettings>
+
+  <add key="MadDbConnString">
+    <azure key="server=yp4mnt6ct9.database.windows.net;database=MAD;MultipleActiveResultSets=True;Persist Security Info=True;User ID=weeworldadmin@yp4mnt6ct9; Password=wCdxTk3C" />
+    <teame key="server=uk1sql01;database=MAD;trusted_connection=true;" />
+    <teame-developer key="server=uk1sql01;database=MAD;trusted_connection=true;" />
+  </add>
+
+  <add key="RequireHttps">
+    <azure key="true" />
+    <teame key="false" />
+    <teame-developer key="false" />
+  </add>
+
+  <add key="baseUrl">
+    <azure key="https://mad.azurewebsites.net" />
+    <teame key="http://uk1vmdev04/mad" />
+    <teame-developer key="http://localhost/mad" />
+  </add>
+  
+</appsettings>

@@ -1,0 +1,153 @@
+<section id="builds">
+
+    <div class="app-content-full panel">
+        
+        <div class="panel-heading">
+            <i class="fa fa-gear"></i> Builds 
+        </div>
+
+        <div class="panel-body">
+
+            <div id="builds-app-list" data-bind="with: currentApp">
+                <i class="left fa fa-chevron-left" data-bind="click: $root.Prev"></i>
+                <div class="center" data-bind="text: Name"></div>
+                <i class="right fa fa-chevron-right" data-bind="click: $root.Next"></i>
+            </div>
+            <div class="clear"></div>
+        
+            <div id="builds-filter">
+                <div class="all "data-bind="type: { value: 'all' }">
+                    <i class="fa fa-square"></i>
+                    <span>all</span>
+                </div>
+                <div class="production" data-bind="type: { value: 'production' }">
+                    <i class="fa fa-square"></i>
+                    <span>production</span>
+                </div>
+                <div class="ad-hoc" data-bind="type: { value: 'ad-hoc' }">
+                    <i class="fa fa-square"></i>
+                    <span>ad-hoc</span>
+                </div>
+            </div>
+
+            <div class="builds-list latest" data-bind="with: latestBuiled">
+                <ul>
+                    <li>
+                        <div class="header" data-bind="click: $root.ToggleDetails">
+                            <div class="icon">
+                                <i class="fa fa-code-fork"></i>
+                            </div>
+                            <div class="date">
+                                <span data-bind="formattedDate: DateCreated"></span>
+                            </div>
+                            <div class="number">
+                                <span data-bind="text: BuildNumber"></span>
+                            </div>
+                            <div class="version">
+                                Latest [ <span data-bind="text: VersionNumber"></span> ]
+                            </div>
+                            <div class="download">
+                                <a data-blind="attr: { href: PackageUrl }">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <ul>
+                                <li>
+                                    <div class="header">
+                                        <div class="icon production">
+                                            <i class="fa fa-code-fork"></i>
+                                        </div>
+                                        <div class="date">
+                                            <span data-bind="formattedDate: DateCreated"></span>
+                                        </div>
+                                        <div class="number">
+                                            <span data-bind="text: BuildNumber"></span>
+                                        </div>
+                                        <div class="version">
+                                            <span data-bind="text: VersionNumber"></span>
+                                        </div>
+                                        <div class="download">
+                                            <a data-blind="attr: { href: PackageUrl }">
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="releaseNotes">
+                                        <span data-bind="text: ReleaseNotes"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                       </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="builds-list">
+                <div class="spinner" data-bind="visible: loadingList()">
+                    <i class="fa fa-spinner fa-spin" style="vertical-align:middle"></i>  loading...
+                </div>
+                
+                <ul data-bind="foreach: $root.builds">
+                    <li>
+                        <div class="header" data-bind="click: $root.ToggleDetails">
+                            <div class="icon">
+                                <i class="fa fa-code-fork"></i>
+                            </div>
+                            <div class="date">
+                                <span data-bind="formattedDate: DateCreated"></span>
+                            </div>
+                            <div class="number">
+                                <span data-bind="text: BuildNumber"></span>
+                            </div>
+                            <div class="version">
+                                <span data-bind="text: VersionNumber"></span>
+                            </div>
+                            <div class="download">
+                                <a data-blind="attr: { href: PackageUrl }">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="details hide">
+                            <ul data-bind="foreach: $root.builds">
+                                <li>    
+                                    <div class="header" data-bind="click: $root.ToggleDetails, clickBubble: false">
+                                        <div class="icon production">
+                                            <i class="fa fa-code-fork"></i>
+                                        </div>
+                                        <div class="date">
+                                            <span data-bind="formattedDate: DateCreated"></span>
+                                        </div>
+                                        <div class="number">
+                                            <span data-bind="text: $parent.BuildNumber"></span>
+                                        </div>
+                                        <div class="download">
+                                            <a data-blind="attr: { href: PackageUrl }">
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="releaseNotes hide">
+                                        <span data-bind="text: ReleaseNotes"></span>
+                                        </div>
+                                </li>
+                            </ul>
+                       </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-default" data-bind="click: Init"> 
+                    <i class="fa fa-refresh"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>

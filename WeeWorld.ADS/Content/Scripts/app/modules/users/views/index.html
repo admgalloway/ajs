@@ -1,0 +1,121 @@
+﻿<!-- route controller set to userindexCtrl on ng-view by routing module -->
+
+<div class="section section-left">
+
+    <div class="section-header">
+        <i class="fa fa-users"></i> Users
+        <i class="fa fa-plus pull-right hover" ng-click="OpenForm(); $event.stopPropagation();" title="Create New User"></i>
+    </div>
+    <div class="section-content">
+
+        <div ng-show="fetchingUsers" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i> 
+            <div>Loading Users</div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Admin</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users" ng-click="OpenForm(user)">
+                    <td>{{user.Id}}</td>
+                    <td>{{user.EmailAddress}}</td>
+                    <td>
+                        <i class="fa {{user.IsAdmin | isAdmin}}"></i>
+                    </td>
+                    <td>
+                        <i class="fa fa-times close" ng-click="Delete(user.Id); $event.stopPropagation();" title="Delete"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section section-right" ng-show="isEditting()">
+
+    <div class="section-header">
+            <i class="fa fa-user"></i>
+            <span ng-switch="currentUser.Id">
+                <span ng-switch-when="0">Create New</span>
+                <span ng-switch-default>Edit</span>
+            </span> User
+        <i class="fa fa-times pull-right hover" ng-click="CloseForm(); $event.stopPropagation();" title="Close Form"></i>
+
+    </div>
+
+    <div class="section-content">
+
+        <div ng-show="savingUser" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Saving User</div>
+        </div>
+
+
+        <div class="alert-box alert-box-{{alertState}}">
+            <i class="fa fa-times pull-right hover" ng-click="HideAlert(); $event.stopPropagation();" title="Dismiss"></i>
+            <span ng-switch="alertState">
+                <span ng-switch-when="success">User saved!</span>
+                <span ng-switch-when="warning">meh</span>
+            </span>
+            
+            <ul class="fa-ul validation-errors" ng-if="errors.length > 0" >
+                <li ng-repeat="error in errors">
+                    <i class="fa-li fa fa-exclamation-circle"></i>
+                    <span>{{error.Details}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="form-control" id="id" ng-model="currentUser.Id" readonly="readonly" title="This id is generated automatically when a user is created.">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email Address" ng-model="currentUser.EmailAddress">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="js-tooltip">
+                    Leaving the password blank will keep the user's password the same.
+                </div>
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="currentUser.Password">
+                </div>
+
+            <div class="form-group" ng-show="currentUser.Id > 0">
+                <label>Distribution Groups</label>
+                <div class="js-tooltip">
+                    <p>Select which groups that this user is part of.</p>
+                    <p>This will define the applications they can access and the alerts they receive.</p>
+                </div>
+                <ul class="scrolling-list">
+                    <li ng-click="ToggleGroup(group)" ng-repeat="group in groups">
+                        <div>
+                            <i class="fa {{group.Id | isInGroup:currentUser}}"></i>
+                            <span>{{group.Name}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+        </form>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-link" ng-click="CloseForm(); $event.stopPropagation();" title="Cancel">cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="currentUser.Id > 0 ? Update() : Create(); $event.stopPropagation();">Save</button>
+        </div>
+
+    </div>
+</div>
+
+<link href="content/scripts/app/modules/users/styles/users.css" rel="stylesheet" />

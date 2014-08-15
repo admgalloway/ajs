@@ -1,0 +1,147 @@
+﻿<div class="section section-left">
+
+    <div class="section-header">
+        <i class="fa fa-th"></i> Distribution Groups
+        <div class="js-tooltip">
+            <p>
+                Distribution groups define collections of users who have access to certain applications and builds.
+            </p>
+        </div>
+
+        <i class="fa fa-plus pull-right hover" ng-click="OpenForm(); $event.stopPropagation();" title="Create New Group"></i>
+    </div>
+    <div class="section-content">
+
+        <div ng-show="fetchingGroups" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Loading Groups</div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="group in groups" ng-click="OpenForm(group)">
+                    <td>{{group.Id}}</td>
+                    <td>{{group.Name}}</td>
+                    <td>
+                        <i class="fa fa-times close" ng-click="Delete(group.Id); $event.stopPropagation();" title="Delete"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section section-right" ng-show="isEditting()">
+
+    <div class="section-header">
+        <i class="fa fa-th-large"></i>
+            <span ng-switch="currentGroup.Id">
+                <span ng-switch-when="0">Create New</span>
+                <span ng-switch-default>Edit</span>
+            </span> Distribution Group
+        <i class="fa fa-times pull-right hover" ng-click="CloseForm(); $event.stopPropagation();" title="Close Form"></i>
+    </div>
+
+    <div class="section-content">
+
+        <div ng-show="savingGroup" class="spinner">
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+            <div>Saving Group</div>
+        </div>
+
+
+        <div class="alert-box alert-box-{{alertState}}">
+            <i class="fa fa-times pull-right hover" ng-click="HideAlert(); $event.stopPropagation();" title="Dismiss"></i>
+            <span ng-switch="alertState">
+                <span ng-switch-when="success">Group saved!</span>
+                <span ng-switch-when="warning">meh</span>
+            </span>
+            
+            <ul class="fa-ul validation-errors" ng-if="errors.length > 0" >
+                <li ng-repeat="error in errors">
+                    <i class="fa-li fa fa-exclamation-circle"></i>
+                    <span>{{error.Details}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="form-control" id="id" ng-model="currentGroup.Id" readonly="readonly" title="This id is generated automatically when a group is created.">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Group Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Group Name" ng-model="currentGroup.Name">
+            </div>
+
+            <div class="form-group">
+                <label for="alertStatus">Generate Notifications for</label>
+                <div class="js-tooltip">
+                    <p>Users in this group will receive email notifications when new builds are available. Edit this setting to define which notifications are sent to this group of users.</p>
+                    <p>
+                        Ad-hoc builds are potentially instable whereas production builds are stable working versions.
+                    </p>
+                </div>
+
+                <select class="form-control" id="alertStatus" name="alertStatus" ng-model="currentGroup.AlertStatus">
+                    <option value="0">None</option>
+                    <option value="1">Ad-hoc</option>
+                    <option value="2">Production</option>
+                    <option value="3">Both</option>
+                </select>
+            </div>
+
+
+            <div class="form-group" ng-show="currentGroup.Id > 0">
+                <label>Users</label>
+                <div class="js-tooltip">
+                    <p>Select which users are in this group</p>
+                    <p>This will define the applications they can access and the alerts they receive.</p>
+                </div>
+                <ul class="scrolling-list">
+                    <li ng-click="ToggleUser(user.Id)" ng-repeat="user in users">
+                        <div>
+                            <i class="fa {{user.Id | hasUser:currentGroup}}"></i>
+                            <span>{{user.EmailAddress}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+            <div class="form-group" ng-show="currentGroup.Id > 0">
+                <label>Applications</label>
+                <div class="js-tooltip">
+                    <p>Select which users are in this application</p>
+                    <p>This will define the applications they can access and the alerts they receive.</p>
+                </div>
+                <ul class="scrolling-list">
+                    <li ng-click="ToggleApplication(application.Id)" ng-repeat="application in applications">
+                        <div>
+                            <i class="fa {{application.Id | hasApplication:currentGroup}}"></i>
+                            <span>{{application.Name}}</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+        </form>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-link" ng-click="CloseForm(); $event.stopPropagation();" title="Cancel">cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="currentGroup.Id > 0 ? Update() : Create(); $event.stopPropagation();">Save</button>
+        </div>
+
+    </div>
+</div>
+
+<link href="content/scripts/app/modules/groups/styles/groups.css" rel="stylesheet" />

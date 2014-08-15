@@ -1,0 +1,29 @@
+﻿.release-build {
+
+    font-weight:bold;
+    background:#fafafa;
+    color:#229;
+
+}
+
+
+.form-group.split {
+}
+.form-group.split .form-control {
+
+width: 46%;
+margin: 0 1%;
+display: inline-block;
+}
+
+
+@media screen and (max-width: 700px) {
+.form-group.split .form-control {
+
+display: block;
+width: 98%;
+margin: 5px 1%;
+
+}
+
+}

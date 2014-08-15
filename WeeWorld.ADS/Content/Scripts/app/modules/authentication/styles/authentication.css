@@ -1,0 +1,62 @@
+﻿
+body {
+    padding:200px 0 0 0;
+}
+
+.section-box {
+        background:transparent;
+
+    position:relative;
+    background:transparent;
+    width:375px;
+    min-height:325px;
+    margin:auto;
+    box-shadow: 1px 0px 1px #bbb;
+    transition:none;
+    -webkit-transition:none;
+    -moz-transition:none;
+
+}
+
+.section, 
+.section .section-header
+{
+    border:none;
+    box-shadow:none;
+    }
+
+.section .section-header {
+
+    background:none;
+    background-color:transparent;
+    font-size:1.3em;
+    text-align:center;  
+}
+
+label {
+    display:none;   
+    color:#bbb;
+
+}
+
+button i {
+    vertical-align:baseline;
+}
+
+.authenticating {
+    color:#bbb;
+}
+
+.error {
+    color:#dd2;
+}
+
+.error i,
+.authenticating i {
+    vertical-align:middle;
+    margin:0 5px;
+}
+
+em.highlight {
+    color:#22b;
+}
