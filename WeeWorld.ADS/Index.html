@@ -18,23 +18,19 @@
 </head>
 <body ng-app="ads" ng-controller="appController">
 
-    <nav ng-if="loggedIn()">
-        <header>
-            <div class="center-xy">ads</div>
-        </header>
-        <a href="#users"><i class="fa fa-2x fa-users"></i> <div>Users</div></a>
-        <a href="#groups"><i class="fa fa-2x fa-th"></i> <div>Groups</div></a>
-        <a href="#applications"><i class="fa fa-2x fa-cubes"></i> <div>Apps</div></a>
-        <a href="#builds"><i class="fa fa-2x fa-code-fork"></i> <div>Builds</div></a>
-        <a ng-click="Logout()"><i class="fa fa-2x fa-taxi"></i> <div>Logout</div></a>
-    </nav>
+    <div ng-switch="loggedIn">
+        <div ng-switch-when="true">
 
-    <div ng-if="loggedIn()" class="content-wrapper">
-        <div id="content-view" ng-view></div>
+            <div ng-include="'content/scripts/app/common/templates/navbar.html'"></div>
+
+            <div class="content-wrapper">
+                <div id="content-view" ng-view></div>
+            </div>
+        </div>
+        <div ng-switch-default>
+            <div ng-controller="LoginController" ng-include="'content/scripts/app/modules/authentication/views/login.html'"></div>
+        </div>
     </div>
-
-    {{token}}
-    <div ng-if="!loggedIn()" ng-controller="LoginController" ng-include="'content/scripts/app/modules/authentication/views/login.html'"></div>
 
 
 
@@ -55,20 +51,20 @@
     <script src="content/scripts/app/modules/users/models/user.js"></script>
     <script src="content/scripts/app/modules/users/filters/isInGroupFilter.js"></script>
     <script src="content/scripts/app/modules/users/filters/isAdminFilter.js"></script>
-                         
+
     <script src="content/scripts/app/modules/groups/module.js"></script>
     <script src="content/scripts/app/modules/groups/controllers/groupsController.js"></script>
     <script src="content/scripts/app/modules/groups/services/groupService.js"></script>
     <script src="content/scripts/app/modules/groups/models/group.js"></script>
     <script src="content/scripts/app/modules/groups/filters/hasUserFilter.js"></script>
     <script src="content/scripts/app/modules/groups/filters/hasApplicationFilter.js"></script>
-                         
+
     <script src="content/scripts/app/modules/applications/module.js"></script>
     <script src="content/scripts/app/modules/applications/controllers/applicationsController.js"></script>
     <script src="content/scripts/app/modules/applications/services/applicationService.js"></script>
     <script src="content/scripts/app/modules/applications/models/application.js"></script>
     <script src="content/scripts/app/modules/applications/filters/isInGroupFilter.js"></script>
-                         
+
     <script src="content/scripts/app/modules/builds/module.js"></script>
     <script src="content/scripts/app/modules/builds/controllers/buildsController.js"></script>
     <script src="content/scripts/app/modules/builds/services/buildService.js"></script>
@@ -76,9 +72,12 @@
     <script src="content/scripts/app/modules/builds/filters/buildTypeFilter.js"></script>
     <script src="content/scripts/app/modules/builds/filters/submissionStateFilter.js"></script>
     <script src="content/scripts/app/modules/builds/filters/applicationNameFilter.js"></script>
-                         
+
     <script src="content/scripts/app/common/directives/appHeader.js"></script>
     <script src="content/scripts/app/common/directives/tooltip.js"></script>
+    <script src="content/scripts/app/common/services/sessionService.js"></script>
+    <script src="content/scripts/app/common/services/authInterceptor.js"></script>
+
 
 </body>
 </html>

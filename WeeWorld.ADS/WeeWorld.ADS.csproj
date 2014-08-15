@@ -228,6 +228,7 @@
     <Content Include="Content\Scripts\app\common\directives\tooltip.js" />
     <Content Include="Content\Scripts\app\common\directives\appHeader.js" />
     <Content Include="Content\Scripts\app\common\resources\resourceController.js" />
+    <Content Include="Content\Scripts\app\common\services\authInterceptor.js" />
     <Content Include="Content\Scripts\app\common\services\sessionService.js" />
     <Content Include="Content\Scripts\app\common\templates\alertBox.html" />
     <Content Include="Content\Scripts\app\common\templates\tooltip.html" />

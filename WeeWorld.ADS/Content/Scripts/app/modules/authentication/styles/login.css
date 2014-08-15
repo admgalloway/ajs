@@ -1,6 +1,9 @@
 ﻿
 body {
-    padding:200px 0 0 0;
+    padding-top:200px;
+    padding-left:0;
+    transition:all 0.3s linear;
+    overflow:hidden;
 }
 
 .section-box {
@@ -8,14 +11,27 @@ body {
 
     position:relative;
     background:transparent;
-    width:375px;
+    max-width:375px;
     min-height:325px;
     margin:auto;
     box-shadow: 1px 0px 1px #bbb;
     transition:none;
     -webkit-transition:none;
     -moz-transition:none;
+}
 
+@media screen and (max-height: 600px) {
+    body {
+        padding-top:0;
+    }
+}
+
+/* nav bar at top */
+@media screen and (min-width: 0px) {
+
+    .section {
+        top: 0px;
+    }
 }
 
 .section, 
@@ -60,3 +76,13 @@ button i {
 em.highlight {
     color:#22b;
 }
+
+.js-tooltip i {
+    color:#999;
+
+}
+
+.input-group-addon, .input-group-btn {
+    white-space:normal;
+}
+

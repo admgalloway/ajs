@@ -2,8 +2,6 @@ var users = angular.module('ads.users');
 
 users.service('UserService', function ($http, $q) {
 
-    $http.defaults.headers.common.Authorization = 'ttoken';
-
     var resourceUrl = 'api/users/';
 
     var userService = {};

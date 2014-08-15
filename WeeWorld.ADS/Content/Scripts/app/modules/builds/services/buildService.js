@@ -2,8 +2,6 @@ var builds = angular.module('ads.builds');
 
 builds.service('BuildService', function ($http, $q) {
 
-    $http.defaults.headers.common.Authorization = 'ttoken';
-
     var resourceUrl = 'api/builds/';
 
     var buildService = {};

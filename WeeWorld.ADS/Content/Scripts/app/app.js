@@ -28,26 +28,26 @@ ads.config(function ($routeProvider) {
         .otherwise({ redirectTo: '/users' });
 });
 
-ads.controller('appController', function ($scope) {
+ads.controller('appController', function ($scope, SessionService) {
 
-    $scope.token = null;
-
-    // global stuff here, if any
-    $scope.loggedIn = function ()
-    {
-        return $scope.token != null;
-    }
-
-    $scope.$on('login', function (token) {
-        $scope.token = token;
-    });
-
-    $scope.$on('logout', function () {
-        $scope.token = null;
-    });
+    $scope.loggedIn = false;
 
     $scope.Logout = function () {
         $scope.$emit('logout');
     };
+
+    /* event listeners */
+    $scope.$on('login', function (event, token) {
+
+        SessionService.setToken(token);
+        $scope.loggedIn = true;
+    });
+
+    $scope.$on('logout', function (event) {
+
+        SessionService.destroyToken();
+        $scope.loggedIn = false;
+    });
+
 
 });

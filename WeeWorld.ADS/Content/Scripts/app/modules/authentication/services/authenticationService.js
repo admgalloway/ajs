@@ -2,8 +2,6 @@ var authentication = angular.module('ads.authentication');
 
 authentication.service('AuthenticationService', function ($http, $q) {
 
-    $http.defaults.headers.common.Authorization = 'ttoken';
-
     var resourceUrl = 'api/auth/';
 
     var authenticationService = {};
@@ -12,7 +10,7 @@ authentication.service('AuthenticationService', function ($http, $q) {
 
         if (emailAddress == null || password == null)
         {
-            return $q.reject('dont take the piss. enter your credentials...')
+            return $q.reject('email and password are required')
         }
 
         if (emailAddress.indexOf('@') < 0)
@@ -46,4 +44,4 @@ authentication.service('AuthenticationService', function ($http, $q) {
     }
 
     return authenticationService;
-}); 
+});

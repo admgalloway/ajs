@@ -138,6 +138,10 @@ nav a:hover div {
         color:#ddd
     }
 
+    .section .section-header .js-tooltip .tooltip-content {
+        color: #3e4045;
+    }
+
 .section .section-content {
     position:absolute;
     left:0;
@@ -365,6 +369,11 @@ form {
 
     .section {
         top: 80px;
+    }
+
+    .section .section-header {
+        height:30px;
+        padding:5px;
     }
 
     .content-wrapper {

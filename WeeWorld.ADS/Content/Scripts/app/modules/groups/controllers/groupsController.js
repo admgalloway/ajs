@@ -55,6 +55,7 @@ groups.controller('GroupsController', function ($scope, $rootScope, GroupService
             $scope.alertState = 'error';
             $scope.errors = response;
             $scope.savingGroup = false;
+
         });
     };
 

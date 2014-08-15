@@ -2,8 +2,6 @@ var groups = angular.module('ads.groups');
 
 groups.service('GroupService', function ($http, $q) {
 
-    $http.defaults.headers.common.Authorization = 'ttoken';
-
     var resourceUrl = 'api/groups/';
 
     var groupService = {};

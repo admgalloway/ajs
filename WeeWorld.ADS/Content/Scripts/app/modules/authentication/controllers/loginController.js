@@ -10,13 +10,9 @@ authentication.controller('LoginController', function ($scope, AuthenticationSer
     $scope.authenticating = false;
     $scope.error;
 
-    $scope.Init = function () {
-    };
-    
 
     $scope.Login = function () {
 
-        console.log('logging in');
         $scope.authenticating = true;
 
         AuthenticationService.Authenticate($scope.credentials.emailAddress, $scope.credentials.password).then(function (token) {

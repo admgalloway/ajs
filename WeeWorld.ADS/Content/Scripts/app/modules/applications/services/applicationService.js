@@ -2,8 +2,6 @@ var applications = angular.module('ads.applications');
 
 applications.service('ApplicationService', function ($http, $q) {
 
-    $http.defaults.headers.common.Authorization = 'ttoken';
-
     var resourceUrl = 'api/applications/';
 
     var applicationService = {};

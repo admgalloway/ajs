@@ -31,7 +31,7 @@ namespace WeeWorld.ADS.Controllers.API.Attributes
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            return;
+            //return;
 
             if (actionContext.Request.Headers.Authorization == null)
             {

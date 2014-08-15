@@ -31,8 +31,8 @@ namespace WeeWorld.ADS
             container = new WeeWorldWindsorContainer();
 
             // replace default Controller Factory with dedicated WeeWorld one (for MVC Controllers)
-            var controllerFactory = new WindsorControllerFactory(container.Kernel);
-            ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+            //var controllerFactory = new WindsorControllerFactory(container.Kernel);
+            //ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
             // replace default Controller Activator with dedicated WeeWorld one (for API controllers)
             var controllerActivator = new WindsorControllerActivator(container);
