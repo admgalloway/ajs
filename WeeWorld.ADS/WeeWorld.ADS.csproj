@@ -227,22 +227,19 @@
     <Content Include="Content\Scripts\app\common\directives\alertBox.js" />
     <Content Include="Content\Scripts\app\common\directives\tooltip.js" />
     <Content Include="Content\Scripts\app\common\directives\appHeader.js" />
-    <Content Include="Content\Scripts\app\common\resources\resourceController.js" />
     <Content Include="Content\Scripts\app\common\services\authInterceptor.js" />
     <Content Include="Content\Scripts\app\common\services\sessionService.js" />
     <Content Include="Content\Scripts\app\common\templates\alertBox.html" />
+    <Content Include="Content\Scripts\app\common\templates\navbar.html" />
     <Content Include="Content\Scripts\app\common\templates\tooltip.html" />
     <Content Include="Content\Scripts\app\common\templates\appHeader.html" />
     <Content Include="Content\Scripts\app\modules\authentication\controllers\loginController.js" />
     <Content Include="Content\Scripts\app\modules\authentication\models\application.js" />
     <Content Include="Content\Scripts\app\modules\authentication\module.js" />
     <Content Include="Content\Scripts\app\modules\authentication\services\authenticationService.js" />
-    <Content Include="Content\Scripts\app\modules\authentication\styles\authentication.css" />
+    <Content Include="Content\Scripts\app\modules\authentication\styles\login.css" />
     <Content Include="Content\Scripts\app\modules\authentication\views\login.html" />
     <Content Include="Content\Scripts\app\modules\builds\filters\buildFilter.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\controllers\buildsController.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\services\buildService.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\views\index.html" />
     <Content Include="Content\Scripts\app\modules\builds\filters\applicationNameFilter.js" />
     <Content Include="Content\Scripts\app\modules\builds\filters\submissionStateFilter.js" />
     <Content Include="Content\Scripts\app\modules\builds\filters\buildTypeFilter.js" />
@@ -284,118 +281,28 @@
     <Content Include="Content\Styles\font-awesome.min.css" />
     <Content Include="Content\Styles\login.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Scripts\app\common\context.js" />
-    <Content Include="Content\Scripts\app\common\dom-controller.js" />
-    <Content Include="Content\Scripts\app\common\helpers\localizer.js" />
-    <Content Include="Content\Scripts\app\common\helpers\logger.js" />
-    <Content Include="Content\Scripts\app\common\helpers\mediator.js" />
-    <Content Include="Content\Scripts\app\common\helpers\router.js" />
-    <Content Include="Content\Scripts\app\common\helpers\settings.js" />
-    <Content Include="Content\Scripts\app\common\helpers\styler.js" />
-    <Content Include="Content\Scripts\app\common\helpers\_helpers_.js" />
-    <Content Include="Content\Scripts\app\common\restClient.js" />
-    <Content Include="Content\Scripts\app\common\url-controller.js" />
-    <Content Include="Content\Scripts\app\common\view-template.js" />
-    <Content Include="Content\Scripts\app\common\_boiler_.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\list\component.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\list\style.css" />
-    <Content Include="Content\Scripts\app\modules\builds.old\list\view.html" />
-    <Content Include="Content\Scripts\app\modules\builds.old\mobile\viewmodel.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\list\viewmodel.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\mobile\style.css" />
-    <Content Include="Content\Scripts\app\modules\builds.old\mobile\component.js" />
-    <Content Include="Content\Scripts\app\modules\builds.old\mobile\view.html" />
-    <Content Include="Content\Scripts\app\modules\builds.old\module.js" />
     <Content Include="Content\Scripts\app\modules\users\module.js" />
-    <Content Include="Content\Scripts\libs\boilerplate\groundwork.js" />
     <Content Include="Content\Scripts\libs\bootstrap\bootstrap.min.js" />
-    <Content Include="Content\Scripts\libs\crossroads\crossroads.min.js" />
-    <Content Include="Content\Scripts\libs\hasher\hasher.min.js" />
     <Content Include="Content\Scripts\libs\jquery\jquery-min.js" />
     <Content Include="Content\Scripts\libs\jquery\jquery-serialize.js" />
     <Content Include="Content\Scripts\libs\knockout\mapping.js" />
     <Content Include="Content\Scripts\libs\knockout\knockout.js" />
-    <Content Include="Content\Scripts\libs\pubsub\pubsub-20120708.js" />
-    <Content Include="Content\Scripts\libs\qunit\qunit-1.9.0.js" />
     <Content Include="Content\Scripts\libs\require\domReady.js" />
     <Content Include="Content\Scripts\libs\require\i18n.js" />
     <Content Include="Content\Scripts\libs\require\path.js" />
     <Content Include="Content\Scripts\libs\require\require.js" />
     <Content Include="Content\Scripts\libs\require\text.js" />
-    <Content Include="Content\Scripts\libs\signals\signals.min.js" />
-    <Content Include="Content\Scripts\libs\sinon\sinon-1.3.4.js" />
-    <Content Include="Content\Scripts\libs\sinon\sinon-qunit-1.0.0.js" />
-    <Content Include="Content\Scripts\libs\testr\testr.js" />
     <Content Include="Content\Scripts\libs\underscore\underscore.js" />
-    <Content Include="Content\Scripts\tests\core\helpers\mediator.js" />
-    <Content Include="Content\Scripts\tests\core\helpers\router.js" />
-    <Content Include="Content\Scripts\tests\core\helpers\settings.js" />
-    <Content Include="Content\Scripts\tests\index.html" />
-    <Content Include="Content\Scripts\tests\other\js-encapsulation.js" />
-    <Content Include="Content\Scripts\tests\other\js-prototypes.js" />
-    <Content Include="Content\Scripts\tests\qunit-1.9.0.css" />
-    <Content Include="Content\Scripts\tests\samples.js" />
-    <Content Include="Content\Scripts\tests\tests.js" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\css\external-small.png" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\css\logo.png" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\css\main.css" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\js\tabs.js" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\js\yui-prettify.js" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\vendor\prettify\CHANGES.html" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\vendor\prettify\prettify-min.css" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\vendor\prettify\prettify-min.js" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\vendor\prettify\README.html" />
-    <Content Include="Content\Scripts\tools\optimizer\boilerplatejs.build.js" />
-    <Content Include="Content\Scripts\tools\optimizer\r.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\module.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\component.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\nls\resources.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\nls\sv\resources.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\style.css" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\view.html" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent1\viewmodel.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent2\component.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent2\view.html" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\sampleUIComponent2\viewmodel.js" />
-    <Content Include="Content\Scripts\tools\snippets\sampleModule1\settings.js" />
     <Content Include="loaderio-3036e403d9e5db53a27d35f3a19aed0a.txt" />
-    <Content Include="newrelic\extensions\CoreInstrumentation.xml" />
-    <Content Include="newrelic\NewRelic.Agent.Core.dll" />
-    <Content Include="newrelic\NewRelic.Profiler.dll" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.config.wwReplacements" />
-    <Content Include="Web.config.wwtemplate">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Scripts\app\modules\builds.old\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Scripts\tools\documentation\document.bat" />
-    <Content Include="Content\Scripts\tools\documentation\document.sh" />
-    <Content Include="Content\Scripts\tools\documentation\README.md" />
-    <Content Include="Content\Scripts\tools\documentation\template\assets\vendor\prettify\COPYING" />
-    <Content Include="Content\Scripts\tools\documentation\template\layouts\main.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\attrs.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\classes.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\events.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\files.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\index.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\method.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\module.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\props.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\partials\sidebar.handlebars" />
-    <Content Include="Content\Scripts\tools\documentation\template\theme.json" />
-    <Content Include="Content\Scripts\tools\documentation\yuidoc.json" />
-    <Content Include="Content\Scripts\tools\optimizer\optimizer.bat" />
-    <Content Include="Content\Scripts\tools\optimizer\optimizer.sh" />
-    <Content Include="Content\Scripts\tools\optimizer\README.md" />
     <Content Include="Content\Fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\Fonts\fontawesome-webfont.woff" />
@@ -424,16 +331,30 @@
     <Content Include="Content\Builds\WMAC\3.0.0.2\info.plist" />
     <Content Include="Content\Builds\WMAC\3.0.0.3\info.plist" />
     <Content Include="Content\Builds\WMAC\3.0.0.4\info.plist" />
-    <Content Include="newrelic\newrelic.config" />
-    <Content Include="newrelic\extensions\extension.xsd">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Index.html" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Live.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

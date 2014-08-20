@@ -26,6 +26,8 @@ nav {
     left:0;
     z-index: 2;
     box-shadow:1px 0 1px #000;
+    transition:height linear 0.3s;
+
 }
 
 nav header {
@@ -51,7 +53,6 @@ nav a {
     color:#2e80ab;
     padding:30px 0;
     transition:all linear 0.2s;
-    border-bottom:1px solid #888;
 }
 
 nav a:hover {
@@ -187,7 +188,7 @@ nav a:hover div {
 }
 
 .center-y {
-        width:100%;
+    width:100%;
     height: 50%;
     overflow: visible;
     margin: auto;
@@ -279,7 +280,7 @@ form {
     position:fixed;
     width:300px;
     padding:5px;
-    z-index:100;
+    z-index:300;
 }
 
 .scrolling-list {
@@ -299,6 +300,20 @@ form {
     }
 }
 
+@media screen and (max-height: 470px) {
+    nav a {
+        padding:10px 0;
+    }
+}
+
+@media screen and (max-height: 320px) {
+    nav a {
+        padding:10px 0;
+    }
+        nav a div {
+            display:none;
+    }
+}
 
 .scrolling-list::-webkit-scrollbar {
     width: 18px;
@@ -345,6 +360,10 @@ form {
     .alert-box .validation-errors {
         width: 80%;
     }
+
+    .js-tooltip span.tooltip-content {
+        right:10px;
+    }
 }
 
 /* nav bar at top */
@@ -353,6 +372,7 @@ form {
     body nav {
         width: 100%;
         bottom: auto;
+        height:78px;
     }
 
         body nav header,
@@ -364,7 +384,6 @@ form {
             padding: 1em 0;
             height: 100%;
             border-bottom: 0;
-            border-left: 1px solid #888;
         }
 
     .section {
@@ -379,12 +398,21 @@ form {
     .content-wrapper {
         left: 0;
     }
+
+    
+
 }
 
 /* no labels on nav bar */
 @media screen and (max-width: 320px) {
     body nav a div {
         display: none;
+    }
+
+    body nav {
+        width: 100%;
+        bottom: auto;
+        height:58px;
     }
 
     .section {

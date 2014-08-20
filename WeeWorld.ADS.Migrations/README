@@ -3,7 +3,8 @@
 C:\dev\MAD\packages\FluentMigrator.1.2.1.0\tools\Migrate.exe
 
 
-migrate -c "server=UK1SQL01;Database=ADS;Integrated Security=SSPI" -db "sqlserver2008" -a "C:\dev\MAD\WeeWorld.ADS.Migrations\bin\Debug\FluentMigrator.dll" -t "migrate:up"
+migrate -c "server=UK1SQL01;Database=ADS;Integrated Security=SSPI" -db "sqlserver2008" -a "C:\dev\WeeWorld.ADS\WeeWorld.ADS.Migrations\bin\Debug\WeeWorld.ADS.Migrations.dll" -t "migrate:up"
+migrate -c "server=t0nkx2lgm9.database.windows.net;Database=ajs;User ID=ajs@t0nkx2lgm9;Password=Glasgow101" -db "sqlserver2008" -a "C:\dev\WeeWolrd.ADS\WeeWorld.ADS.Migrations\bin\Debug\WeeWorld.ADS.Migrations.dll" -t "migrate:up"
 
 -c: the connection string targeting your instance of sql server.
 -db: the type of database server your running migrations against.
@@ -19,3 +20,4 @@ Alternatively, add the directory to your path environment variable.
 
 
 You'll need to set the connection string (-c) param accordingly to point to your server and login credentials.
+
