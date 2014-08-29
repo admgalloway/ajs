@@ -5,3 +5,4 @@ temp/
 *.suo
 /packages/
 /publish/
+/node_modules/

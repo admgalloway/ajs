@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web.Hosting;
 using WeeWorld.ADS.Data.Enums;
 using WeeWorld.ADS.Data.Models;
 using WeeWorld.ADS.Data.Repositories.Abstract;
@@ -27,8 +26,9 @@ namespace WeeWorld.ADS.Services.Concrete
             this.groupService = groupService;
 
 
-            var rootDir = HostingEnvironment.MapPath("http://jenkins.weeworld.local/");
+            //var rootDir = HostingEnvironment.MapPath("http://jenkins.weeworld.local/");
             //var rootDir = HostingEnvironment.MapPath("\\builds\\");
+            var rootDir = "";
             applicationDirectoires = Directory.GetDirectories(rootDir).Select(b => b.ToLower()).ToList();
 	    }
 

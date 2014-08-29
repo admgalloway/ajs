@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Objects;
 using WeeWorld.ADS.Data.Models;
 using WeeWorld.ADS.Data.Repositories.Abstract;
 using System.Linq;
 using System.Data;
+using System.Data.Entity.Core;
 
 namespace WeeWorld.ADS.Data.Repositories.Concrete
 {
