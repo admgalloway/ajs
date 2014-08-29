@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\dev\DCT.Beano\src\DCT.Beano.Tests\bin\debug\DCT.Beano.Tests.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-15" time="15:40:21">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\dev\DCT.Beano\src\DCT.Beano.Management\Scripts" machine-name="UK1PC101" user="agalloway" user-domain="WEEWORLD" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\dev\DCT.Beano\src\DCT.Beano.Tests\bin\debug\DCT.Beano.Tests.dll" executed="True" result="Success" success="True" time="0.330" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="DCT" executed="True" result="Success" success="True" time="0.313" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Beano" executed="True" result="Success" success="True" time="0.312" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.312" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="DummyTest" executed="True" result="Success" success="True" time="0.310" asserts="0">
+                    <results>
+                      <test-case name="DCT.Beano.Tests.DummyTest.Test_That_A_Test_Exists" executed="True" result="Success" success="True" time="0.290" asserts="0">
+                        <reason>
+                          <message><![CDATA[]]></message>
+                        </reason>
+                      </test-case>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
